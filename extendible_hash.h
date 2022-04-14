@@ -2,7 +2,7 @@
  * TODO: Fill this out:
  *
  * @file extendible_hash.h
- * @author your name (you@domain.com)
+ * @author Sammyajit Kapuria (you@domain.com)
  * @brief A representation of an extendible hash table data structure.
  * @version
  * @date
