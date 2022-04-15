@@ -27,13 +27,21 @@ ExtendHash::Directory::Directory(){};
 ExtendHash::Directory::Directory(int size)
 {
     // TODO: resize this directory to the given size.
+    pointers.resize(size);
+
+    // for each pointer.
+    for (auto &p : pointers)
+        // "clear" out the pointer.
+        p = nullptr;
 
     // TODO: calculate and assign the number of significant bits needed for the given size.
+        numSigBits = ExtendHash::Directory::computeSigBits(size);
 }
 
 int ExtendHash::Directory::size()
 {
     // TODO: return the number of pointers to blocks.
+    return pointers.size();
 }
 
 void ExtendHash::Directory::resize(int size)
@@ -47,6 +55,7 @@ void ExtendHash::Directory::resize(int size)
         p = nullptr;
 
     // TODO: compute and assign the number of sigificant bits needed for the new, given size.
+    numSigBits = ExtendHash::Directory::computeSigBits(size);
 }
 
 int ExtendHash::getKey(int data, int size)

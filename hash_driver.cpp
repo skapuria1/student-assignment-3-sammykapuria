@@ -28,5 +28,6 @@ int main()
 
     // TODO: Output the table to standard output.
     cout << Table;
+    cout<<"Test";
     return 0;
 }
