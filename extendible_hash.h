@@ -2,10 +2,10 @@
  * TODO: Fill this out:
  *
  * @file extendible_hash.h
- * @author Sammyajit Kapuria (you@domain.com)
+ * @author Sammyajit Kapuria (sammyajit.kapuria87@myhunter.cuny.edu)
  * @brief A representation of an extendible hash table data structure.
  * @version
- * @date
+ * @date 04/12/22
  *
  * @copyright Copyright (c) 2022
  */

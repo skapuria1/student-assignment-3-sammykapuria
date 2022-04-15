@@ -2,7 +2,7 @@
  * TODO: Fill this out:
  *
  * @file extendible_hash.cpp
- * @author your name (you@domain.com)
+ * @author Sammyajit Kapuria (sammyajit.kapuria87@myhunter.cuny.edu)
  * @brief Extendible hash table implementation file.
  * @version 0.1
  * @date 2022-03-29
