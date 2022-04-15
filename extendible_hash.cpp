@@ -70,21 +70,30 @@ void ExtendHash::doubleDirectory()
     Directory temp(2 * directory.size());
 
     // TODO: for each directory entry.
+    int i = 0;
+    for (Node* x : directory.pointers)
     {
         // TODO: Perform the directory split (this is slide 68) by copying the old pointers to the new one.
+        temp.pointers[i] = x;
+        i++;
+        temp.pointers[i] = x;
+        i++;
     }
 
     // following the split, increment the number of significant bits.
     ++directory.numSigBits;
 
     // TODO: set this tables directory pointers to the temporary one we created earlier.
+    directory.resize(temp.size());
+    directory.pointers = temp.pointers;
 }
 
 ExtendHash::ExtendHash()
 {
     // TODO: "Resize" this table's directory to the default size (e.g., like the one one slide 67).
-
+    directory.resize(4);
     // TODO: Set the number of significant bits to the default value (e.g., like the one one slide 67).
+    directory.numSigBits = 2;
 }
 
 void ExtendHash::insert(int d)
@@ -96,6 +105,7 @@ void ExtendHash::insert(int d)
     while (key >= directory.size())
     {
         // TODO: "split" (double) the directory.
+        doubleDirectory();
 
         // compute and store a new key using the new number of significant bits to consider.
         key = getKey(d, directory.numSigBits);
@@ -143,14 +153,16 @@ void ExtendHash::insert(int d)
                     insert(x);
 
                 // TODO: insert the given data.
+                    insert(d);
 
                 // end the function. We're done.
                 return;
             }
 
         // TODO: at this point, we need a larger directory. Double it.
-
+            doubleDirectory();
         // TODO: then, insert the data.
+            insert(d);
     }
 }
 
