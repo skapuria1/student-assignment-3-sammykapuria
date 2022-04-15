@@ -35,7 +35,7 @@ ExtendHash::Directory::Directory(int size)
         p = nullptr;
 
     // TODO: calculate and assign the number of significant bits needed for the given size.
-        numSigBits = ExtendHash::Directory::computeSigBits(size);
+    numSigBits = ExtendHash::Directory::computeSigBits(size);
 }
 
 int ExtendHash::Directory::size()
@@ -131,6 +131,7 @@ void ExtendHash::insert(int d)
     if (p->data.size() < BLOCKSIZE)
     {
         // TODO: add the data to the end of the block.
+        p->data.push_back(d);
     }
     else // otherwise, we need to "split."
     {
