@@ -1,5 +1,4 @@
 /**
- * TODO: Fill this out:
  *
  * @file extendible_hash.h
  * @author Sammyajit Kapuria (sammyajit.kapuria87@myhunter.cuny.edu)

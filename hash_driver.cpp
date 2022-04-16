@@ -16,18 +16,17 @@ using namespace std;
 
 int main()
 {
-    // TODO: Create an extendable hash table.
+    //Create an extendable hash table.
     ExtendHash Table;
 
     // for 30 iterations.
     for (int i = 0; i < 30; i++)
     {
-        // TODO: Insert the value i * 8 into the table.
+        //Insert the value i * 8 into the table.
         Table.insert(i*8);
     }
 
-    // TODO: Output the table to standard output.
+    //  Output the table to standard output.
     cout << Table;
-    cout<<"Test";
     return 0;
 }

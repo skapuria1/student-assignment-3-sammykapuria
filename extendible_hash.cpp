@@ -1,5 +1,4 @@
 /**
- * TODO: Fill this out:
  *
  * @file extendible_hash.cpp
  * @author Sammyajit Kapuria (sammyajit.kapuria87@myhunter.cuny.edu)
@@ -26,7 +25,7 @@ ExtendHash::Directory::Directory(){};
 
 ExtendHash::Directory::Directory(int size)
 {
-    // TODO: resize this directory to the given size.
+    //resize this directory to the given size.
     pointers.resize(size);
 
     // for each pointer.
@@ -34,13 +33,13 @@ ExtendHash::Directory::Directory(int size)
         // "clear" out the pointer.
         p = nullptr;
 
-    // TODO: calculate and assign the number of significant bits needed for the given size.
+    //calculate and assign the number of significant bits needed for the given size.
     numSigBits = ExtendHash::Directory::computeSigBits(size);
 }
 
 int ExtendHash::Directory::size()
 {
-    // TODO: return the number of pointers to blocks.
+    //return the number of pointers to blocks.
     return pointers.size();
 }
 
@@ -54,7 +53,7 @@ void ExtendHash::Directory::resize(int size)
         // "clear" out the pointer.
         p = nullptr;
 
-    // TODO: compute and assign the number of sigificant bits needed for the new, given size.
+    //compute and assign the number of sigificant bits needed for the new, given size.
     numSigBits = ExtendHash::Directory::computeSigBits(size);
 }
 
@@ -69,11 +68,11 @@ void ExtendHash::doubleDirectory()
     // create a new, temporary directory double the size of this table's directory.
     Directory temp(2 * directory.size());
 
-    // TODO: for each directory entry.
+    //for each directory entry.
     int i = 0;
     for (Node* x : directory.pointers)
     {
-        // TODO: Perform the directory split (this is slide 68) by copying the old pointers to the new one.
+        //Perform the directory split (this is slide 68) by copying the old pointers to the new one.
         temp.pointers[i] = x;
         i++;
         temp.pointers[i] = x;
@@ -83,16 +82,16 @@ void ExtendHash::doubleDirectory()
     // following the split, increment the number of significant bits.
     ++directory.numSigBits;
 
-    // TODO: set this tables directory pointers to the temporary one we created earlier.
+    //set this tables directory pointers to the temporary one we created earlier.
     directory.resize(temp.size());
     directory.pointers = temp.pointers;
 }
 
 ExtendHash::ExtendHash()
 {
-    // TODO: "Resize" this table's directory to the default size (e.g., like the one one slide 67).
+    //"Resize" this table's directory to the default size (e.g., like the one one slide 67).
     directory.resize(2);
-    // TODO: Set the number of significant bits to the default value (e.g., like the one one slide 67).
+    //Set the number of significant bits to the default value (e.g., like the one one slide 67).
     directory.numSigBits = 2;
 }
 
@@ -104,7 +103,7 @@ void ExtendHash::insert(int d)
     // if the key is too big for the current directory.
     while (key >= directory.size())
     {
-        // TODO: "split" (double) the directory.
+        //"split" (double) the directory.
         doubleDirectory();
 
         // compute and store a new key using the new number of significant bits to consider.
@@ -130,7 +129,7 @@ void ExtendHash::insert(int d)
     // if there is room in the found block for the new piece of data.
     if (p->data.size() < BLOCKSIZE)
     {
-        // TODO: add the data to the end of the block.
+        //add the data to the end of the block.
         p->data.push_back(d);
     }
     else // otherwise, we need to "split."
@@ -153,16 +152,16 @@ void ExtendHash::insert(int d)
                 for (auto x : tempBlock)
                     insert(x);
 
-                // TODO: insert the given data.
+                //insert the given data.
                     insert(d);
 
                 // end the function. We're done.
                 return;
             }
 
-        // TODO: at this point, we need a larger directory. Double it.
+        //at this point, we need a larger directory. Double it.
             doubleDirectory();
-        // TODO: then, insert the data.
+        //then, insert the data.
             insert(d);
     }
 }
