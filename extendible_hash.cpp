@@ -91,7 +91,7 @@ void ExtendHash::doubleDirectory()
 ExtendHash::ExtendHash()
 {
     // TODO: "Resize" this table's directory to the default size (e.g., like the one one slide 67).
-    directory.resize(16);
+    directory.resize(2);
     // TODO: Set the number of significant bits to the default value (e.g., like the one one slide 67).
     directory.numSigBits = 2;
 }
